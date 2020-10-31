@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_063022) do
+ActiveRecord::Schema.define(version: 2020_10_31_083230) do
 
   create_table "article_likes", force: :cascade do |t|
     t.integer "article_id", null: false
@@ -87,21 +87,14 @@ ActiveRecord::Schema.define(version: 2020_10_31_063022) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "pm_assigments", force: :cascade do |t|
-    t.integer "recipient_id", null: false
-    t.integer "private_message_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["private_message_id"], name: "index_pm_assigments_on_private_message_id"
-    t.index ["recipient_id"], name: "index_pm_assigments_on_recipient_id"
-  end
-
-  create_table "private_messages", force: :cascade do |t|
-    t.integer "sender_id", null: false
+  create_table "messages", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "sender_id"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sender_id"], name: "index_private_messages_on_sender_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,8 +122,5 @@ ActiveRecord::Schema.define(version: 2020_10_31_063022) do
   add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
-  add_foreign_key "pm_assigments", "private_messages"
-  add_foreign_key "pm_assigments", "recipients"
-  add_foreign_key "private_messages", "senders"
   add_foreign_key "users", "cities"
 end

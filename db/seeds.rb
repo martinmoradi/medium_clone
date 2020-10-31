@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-require "activerecord-reset-pk-sequence"
+require 'activerecord-reset-pk-sequence'
 
 ActiveRecord::Base.connection.disable_referential_integrity do
   User.delete_all
@@ -17,8 +17,8 @@ ActiveRecord::Base.connection.disable_referential_integrity do
   Country.reset_pk_sequence
   Article.delete_all
   Article.reset_pk_sequence
-  PrivateMessage.delete_all
-  PrivateMessage.reset_pk_sequence
+  Message.delete_all
+  Message.reset_pk_sequence
   Bookmark.delete_all
   Bookmark.reset_pk_sequence
   CategoriesAssigment.delete_all
@@ -27,6 +27,7 @@ ActiveRecord::Base.connection.disable_referential_integrity do
   Category.reset_pk_sequence
   Comment.delete_all
   Comment.reset_pk_sequence
+  puts 'DB cleaned up !'
 end
 
 ######## - COUNTRIES - #########
@@ -36,6 +37,7 @@ end
     name: Faker::Address.country
   )
 end
+puts 'Countries created = 10'
 
 ######## - CITIES - #########
 
@@ -45,6 +47,7 @@ end
     country_id: Country.ids.sample
   )
 end
+puts 'Cities created = 80'
 
 ######## - USERS - #########
 
@@ -60,6 +63,7 @@ end
     description: Faker::GreekPhilosophers.quote
   )
 end
+puts 'Users created = 500'
 
 ######## - ARTICLES - #########
 
@@ -70,6 +74,7 @@ end
     content: Faker::Lorem.paragraph_by_chars(number: 2300, supplemental: false)
   )
 end
+puts 'Articles created = 200'
 
 ######## - BOOKMARKS - #########
 
@@ -79,6 +84,7 @@ end
     article_id: Article.ids.sample
   )
 end
+puts 'Bookmarks created = 100'
 
 ######## - CATEGORIES - #########
 
@@ -87,6 +93,7 @@ end
     name: Faker::Book.genre
   )
 end
+puts 'Categories created = 20'
 
 ######## - CATEGORIES_ASSIGMENTS - #########
 
@@ -98,6 +105,7 @@ Article.ids.each do |id|
     )
   end
 end
+puts 'Categories Assigments created = from 1 to 3 per Article'
 
 ######## - COMMENTS - #########
 
@@ -108,24 +116,28 @@ end
     content: Faker::Movie.quote
   )
 end
+puts 'Comments created = 250'
 
 ######## - PRIVATES_MESSAGES - #########
 
 200.times do
-  PrivateMessage.create!(
-    sender: User.ids.sample,
+  Message.create!(
+    sender_id: User.ids.sample,
+    recipient_id: User.ids.sample,
     content: Faker::Hipster.paragraph
   )
 end
+puts 'Privates Messages created = 200'
 
 ######## - PRIVATES_MESSAGES ASSIGMENTS - #########
 
-200.times do
-  PmAssigment.create!(
-    private_message_id: PrivateMessage.ids.sample,
-    recipient: User.all.sample
-  )
-end
+# 200.times do
+#   PmAssigment.create!(
+#     private_message_id: PrivateMessage.ids.sample,
+#     recipient_id: User.all.sample
+#   )
+# end
+# puts 'PM Assigments created = 200'
 
 ######## - ARTICLE_LIKES - #########
 
@@ -135,6 +147,7 @@ end
     user_id: User.ids.sample
   )
 end
+puts 'Likes on Articles created = 300'
 
 ######## - COMMENT_LIKES - #########
 
@@ -144,3 +157,4 @@ end
     user_id: User.ids.sample
   )
 end
+puts 'Likes on Comments created = 150'
