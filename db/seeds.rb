@@ -129,16 +129,6 @@ puts 'Comments created = 250'
 end
 puts 'Privates Messages created = 200'
 
-######## - PRIVATES_MESSAGES ASSIGMENTS - #########
-
-# 200.times do
-#   PmAssigment.create!(
-#     private_message_id: PrivateMessage.ids.sample,
-#     recipient_id: User.all.sample
-#   )
-# end
-# puts 'PM Assigments created = 200'
-
 ######## - ARTICLE_LIKES - #########
 
 300.times do
