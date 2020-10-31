@@ -17,6 +17,8 @@
  */
 
 /* Bulma variables */
+$warning: rgb(255, 192, 23);
+$navbar-item-img-max-height: 4rem;
 
 nav {
   padding: 0.8rem 0;
@@ -24,7 +26,7 @@ nav {
 }
 
 .navbar-item {
-  line-height: 3;
+  line-height: 20px;
 }
 
 .hero-body {
