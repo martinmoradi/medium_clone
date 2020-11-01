@@ -46,6 +46,7 @@ group :development do
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'activerecord-reset-pk-sequence'
   gem 'rubocop'
+  gem 'solargraph'
 end
 
 group :test do

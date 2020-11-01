@@ -19,6 +19,7 @@
 /* Bulma variables */
 $warning: rgb(255, 192, 23);
 $navbar-item-img-max-height: 4rem;
+$black: #080808;
 
 nav {
   padding: 0.8rem 0;
@@ -31,6 +32,21 @@ nav {
 
 .hero-body {
   border-bottom: 1px solid black;
+}
+
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active .get-started:focus,
+.get-started:focus-within,
+.get-started:hover,
+.get-started.is_active {
+  background-color: $warning !important;
+  color: #080808 !important;
 }
 
 @import "bulma";

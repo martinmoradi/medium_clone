@@ -60,7 +60,8 @@ puts 'Cities created = 80'
     city_id: City.ids.sample,
     password: Faker::Internet.password(min_length: 6),
     age: Faker::Number.between(from: 10, to: 120),
-    description: Faker::GreekPhilosophers.quote
+    description: Faker::GreekPhilosophers.quote,
+    premium: Faker::Boolean.boolean(true_ratio: 0.2)
   )
 end
 puts 'Users created = 500'

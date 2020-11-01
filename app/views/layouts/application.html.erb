@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
   <head>
-    <title>MediumClone</title>
+    <title>Medium Clone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -26,20 +26,20 @@
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
-            <a class="navbar-item">
+            <a class="navbar-item navbar-links">
               Our Story
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item navbar-links">
               Membership
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item navbar-links">
               Write
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item noHover" href='<% login_path %>'>
               Sign In
             </a>
             <div class="buttons">
-              <a class="button is-dark">
+              <a class="button is-dark" href='<% signup_path %>'>
                 Get Started
               </a>
             </div>

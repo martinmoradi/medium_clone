@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_083230) do
+ActiveRecord::Schema.define(version: 2020_11_01_095115) do
 
   create_table "article_likes", force: :cascade do |t|
     t.integer "article_id", null: false
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_083230) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "premium", default: false
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 
